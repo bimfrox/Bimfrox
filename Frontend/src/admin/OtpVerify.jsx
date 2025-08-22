@@ -14,7 +14,7 @@ const OtpVerify = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/admin/verify-otp", {
+      const res = await fetch("https://bimfrox-p3a9.onrender.com/admin/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, otp }),
