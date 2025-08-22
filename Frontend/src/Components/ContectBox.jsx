@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 import web from "../assets/images/web_logo.png";
 import mo from "../assets/images/app_logo.png";
@@ -26,40 +27,62 @@ const ContectBox = () => {
   }, []);
 
   return (
-    <div className="max-w-screen-xl mx-auto bg-gradient-to-br from-emerald-900 via-emerald-950 to-black text-white rounded-3xl shadow-2xl p-10 mb-10 flex flex-col md:flex-row items-center md:items-start gap-10 relative overflow-hidden">
-      
+    <section
+      className="max-w-screen-xl mx-auto bg-gradient-to-br from-emerald-900 via-emerald-950 to-black text-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 mb-10 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
+      aria-label="BIMFROX Business Growth Section"
+    >
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Skyrocket Your Business with AI-Powered Software Solutions | BIMFROX</title>
+        <meta
+          name="description"
+          content="BIMFROX helps businesses grow with AI-driven custom software solutions, web development, mobile apps, SEO, digital marketing, and UI/UX design."
+        />
+        <meta
+          name="keywords"
+          content="AI software solutions, web development, mobile app development, SEO services, digital marketing, UI/UX design, business growth"
+        />
+        <meta property="og:title" content="BIMFROX - AI Powered Business Solutions" />
+        <meta property="og:description" content="Skyrocket your business with BIMFROX: AI-powered web development, mobile apps, SEO optimization, and digital marketing." />
+        <meta property="og:image" content={slides[currentSlide]} />
+      </Helmet>
+
       {/* Decorative spinning circle */}
-      <div className="absolute -top-16 -left-16 w-48 h-48 border-4 border-green-400 rounded-full animate-spin-slower opacity-20"></div>
+      <div className="absolute -top-12 -left-12 sm:-top-16 sm:-left-16 w-32 sm:w-48 h-32 sm:h-48 border-4 border-green-400 rounded-full animate-spin-slower opacity-20"></div>
 
       {/* Left Content */}
-      <div className="flex-1 max-w-2xl text-center md:text-left">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-green-300 leading-snug">
-          🚀 Skyrocket Your Business — <span className="text-white">Starting Today</span>
-        </h2>
-        <p className="text-green-100 text-lg leading-relaxed mb-6">
-          Your business deserves more than just “keeping up.”  
-          We deep-dive into your goals, audience needs, and the latest market shifts  
-          to create custom software solutions that put you <span className="text-green-400 font-semibold">years ahead of the competition</span>.
+      <article className="flex-1 text-center md:text-left">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 text-green-300 leading-snug">
+          🚀 Skyrocket Your Business —{" "}
+          <span className="text-white">AI-Powered Solutions</span>
+        </h1>
+        <p className="text-green-100 text-base sm:text-lg md:text-xl leading-relaxed mb-6">
+          At <strong>BIMFROX</strong>, we build <em>custom software solutions</em> that combine{" "}
+          <span className="text-green-400 font-semibold">AI, automation, and innovation</span> to drive
+          your growth. From <strong>web development</strong> to <strong>mobile app design</strong>,{" "}
+          <strong>SEO optimization</strong>, <strong>digital marketing</strong>, and{" "}
+          <strong>UI/UX experiences</strong> — we create strategies that put you{" "}
+          <span className="text-green-400 font-semibold">years ahead of the competition</span>.
         </p>
-        <button
-          className="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-green-400/50 transition transform hover:-translate-y-1"
+        <NavLink
+          to="/contact"
+          className="bg-green-600 hover:bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-lg hover:shadow-green-400/50 transition transform hover:-translate-y-1 inline-block"
         >
-          <NavLink to="/contact">📞 Contact Us Now</NavLink>
-        </button>
-      </div>
+          📞 Contact BIMFROX Today
+        </NavLink>
+      </article>
 
       {/* Right Slider */}
-      <div className="w-full md:w-72 h-48 flex items-center justify-center relative">
+      <aside className="w-full md:w-72 h-48 sm:h-56 md:h-72 flex items-center justify-center relative mt-6 md:mt-0">
         <img
           src={slides[currentSlide]}
-          alt="Slide"
-          className={`absolute h-48 ml-0 md:ml-45 mt-0 md:mt-20 w-72 rounded-3xl object-cover shadow-xl transition-opacity duration-500 ${
-            fade ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ maxWidth: "100%" }}
+          alt={`BIMFROX Service - ${currentSlide + 1}`}
+          className={`absolute rounded-3xl object-cover shadow-xl transition-opacity duration-500
+                      w-56 sm:w-64 md:w-72 h-40 sm:h-48 md:h-72
+                      ${fade ? "opacity-100" : "opacity-0"}`}
         />
-      </div>
-    </div>
+      </aside>
+    </section>
   );
 };
 

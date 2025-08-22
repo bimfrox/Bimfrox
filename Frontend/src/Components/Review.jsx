@@ -1,34 +1,33 @@
 import React, { useState } from "react";
-import am from "../assets/Am Finance & consultancy.png";
-import jjb from "../assets/jjb.png";
-import me from "../assets/me.png";
-import tulsi from "../assets/tulsi.png";
-import vally from "../assets/Valley.png";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import am from "../assets/Clients/am.jpg";
+import jjb from "../assets/Clients/jjb.jpg";
+import me from "../assets/Clients/me .jpg";
+import tulsi from "../assets/Clients/tulsi.jpg";
+import vally from "../assets/Clients/vally.jpg";
 
 const reviews = [
   {
     id: 1,
-    name: "Anonymous",
-    joinDate: "August 2014",
+    name: "Vally",
+    joinDate: "July 2025",
     rating: 4,
-    reviewDate: "March 3, 2017",
+    reviewDate: "July 25, 2025",
     reviewText1:
-      "This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems.",
-    reviewText2:
-      "It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain.",
+      "BIMFROX did an outstanding job designing our website! The design is modern, professional, and perfectly matches our brand. Their service is top-notch, very responsive, and they truly understand client needs. Highly recommended for anyone looking for high-quality web development services.",
+
     helpfulCount: 19,
     avatar: vally,
     feedback: "Thinking to buy another one!",
   },
   {
     id: 2,
-    name: "Alice Johnson",
-    joinDate: "June 2019",
+    name: "Tulsi",
+    joinDate: "July 2025",
     rating: 5,
-    reviewDate: "January 15, 2023",
+    reviewDate: "July 25, 2025",
     reviewText1:
-      "Absolutely love this product! High quality and exceeded my expectations. Customer service was excellent as well.",
-    reviewText2: "",
+      "BIMFROX did an outstanding job designing our website! The design is modern, professional, and perfectly matches our brand. Their service is top-notch, very responsive, and they truly understand client needs. Highly recommended for anyone looking for high-quality web development services.",
     helpfulCount: 24,
     avatar: tulsi,
     feedback: "Highly recommend!",
@@ -48,26 +47,24 @@ const reviews = [
   },
   {
     id: 4,
-    name: "Sophia Lee",
+    name: "JJB Oversize",
     joinDate: "March 2020",
     rating: 5,
     reviewDate: "October 1, 2023",
     reviewText1:
-      "Exceptional quality and beautiful design. I get compliments every time I wear it.",
-    reviewText2: "Will definitely buy again!",
+      "BIMFROX did an outstanding job designing our website! The design is modern, professional, and perfectly matches our brand. Their service is top-notch, very responsive, and they truly understand client needs. Highly recommended for anyone looking for high-quality web development services.",
     helpfulCount: 30,
     avatar: jjb,
     feedback: "Love it!",
   },
   {
     id: 5,
-    name: "James Brown",
+    name: "AM",
     joinDate: "November 2018",
     rating: 4,
     reviewDate: "December 20, 2021",
     reviewText1:
-      "Very good product with great value. Minor scratches after months but nothing serious.",
-    reviewText2: "",
+    "Absolutely love our new website made by BIMFROX! Looks amazing, works perfectly, and the whole process was smooth. The team is super friendly and helpful. Totally worth it",
     helpfulCount: 8,
     avatar: am,
     feedback: "Good value",
@@ -76,7 +73,7 @@ const reviews = [
 
 const Star = ({ filled }) => (
   <svg
-    className={`w-6 h-6 ${filled ? "text-yellow-400" : "text-gray-300"}`}
+    className={`w-5 h-5 sm:w-6 sm:h-6 ${filled ? "text-yellow-400" : "text-gray-300"}`}
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
@@ -91,78 +88,74 @@ const ReviewCarousel = () => {
   const review = reviews[current];
 
   return (
-    <main className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
-      <section className="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl p-10 sm:p-14 relative overflow-hidden">
-        {/* Decorative Background */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-green-50 via-transparent to-blue-50 pointer-events-none"></div>
+    <main className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-green-50 via-white to-green-100 relative overflow-hidden">
+      {/* Decorative Background Shapes */}
+      <div className="absolute top-10 left-10 w-40 h-40 bg-green-300 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-green-400 rounded-full blur-3xl opacity-20"></div>
 
-        <header className="mb-10 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
-            🚀 Hear It Straight From the People Who Matter
+      <section className="w-full max-w-6xl bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-10 md:p-14 relative animate-fadeIn">
+        <header className="mb-8 text-center relative z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+            🚀 Hear It Straight From Our Clients
           </h2>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-            Startups, enterprises, and innovators worldwide choose us for our
-            quality, speed, and commitment. Here’s what they have to say.
+          <p className="mt-3 sm:mt-4 text-gray-600 max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
+            Startups, enterprises, and innovators worldwide choose us for our quality, speed, and commitment. Here’s what they have to say.
           </p>
         </header>
 
         {/* Review Card */}
-        <article className="flex flex-col sm:flex-row items-center sm:items-start gap-8 relative z-10">
+        <article className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-10 relative z-10">
           {/* Avatar */}
           <img
             src={review.avatar}
             alt={`${review.name} avatar`}
-            className="w-28 h-28 rounded-full object-cover shadow-xl flex-shrink-0 transform hover:scale-105 transition duration-300"
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover shadow-lg border-4 border-green-200 transform hover:scale-105 transition duration-300"
           />
 
           {/* Review Content */}
-          <div className="flex-1 text-center sm:text-left">
-            <h3 className="text-2xl font-bold text-gray-900">{review.name || "Anonymous"}</h3>
-            <time
-              className="block text-sm text-gray-500 mb-4"
-              dateTime={review.joinDate}
-            >
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{review.name || "Anonymous"}</h3>
+            <time className="block text-xs sm:text-sm text-gray-500 mb-3" dateTime={review.joinDate}>
               Joined <span className="font-medium">{review.joinDate}</span>
             </time>
 
             {/* Rating & Feedback */}
-            <div className="flex items-center mb-4 space-x-2 justify-center sm:justify-start">
+            <div className="flex items-center mb-3 space-x-1 sm:space-x-2 justify-center md:justify-start">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} filled={i < review.rating} />
               ))}
-              <span className="ml-3 font-semibold text-green-700">{review.feedback}</span>
+              <span className="ml-2 sm:ml-3 font-semibold text-green-700 text-sm sm:text-base">
+                {review.feedback}
+              </span>
             </div>
 
-            <time
-              className="block mb-4 text-sm text-gray-700 font-medium"
-              dateTime={review.reviewDate}
-            >
+            <time className="block mb-3 text-xs sm:text-sm text-gray-700 font-medium" dateTime={review.reviewDate}>
               Reviewed on {review.reviewDate}
             </time>
 
             {/* Review Text */}
-            <p className="text-gray-700 mb-3 leading-relaxed">{review.reviewText1}</p>
+            <p className="text-gray-700 mb-2 text-sm sm:text-base leading-relaxed">{review.reviewText1}</p>
             {review.reviewText2 && (
-              <p className="text-gray-700 mb-5 leading-relaxed">{review.reviewText2}</p>
+              <p className="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">{review.reviewText2}</p>
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-center sm:justify-start space-x-4 mt-6">
+            <div className="flex justify-center md:justify-start space-x-3 sm:space-x-4 mt-4">
               <button
                 onClick={() =>
                   setCurrent((prev) => (prev === 0 ? reviews.length - 1 : prev - 1))
                 }
-                className="px-6 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold transition-shadow shadow-md"
+                className="px-4 sm:px-6 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold flex items-center gap-2 shadow-md"
                 aria-label="Previous review"
               >
-                ← Previous
+                <FaArrowLeft /> <span className="hidden sm:inline">Previous</span>
               </button>
               <button
                 onClick={() => setCurrent((prev) => (prev + 1) % reviews.length)}
-                className="px-6 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold transition-shadow shadow-md"
+                className="px-4 sm:px-6 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold flex items-center gap-2 shadow-md"
                 aria-label="Next review"
               >
-                Next →
+                <span className="hidden sm:inline">Next</span> <FaArrowRight />
               </button>
             </div>
           </div>

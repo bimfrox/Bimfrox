@@ -7,6 +7,16 @@ import Career from './Career';
 import Project from './Project';
 import Service from './Service';
 import ContactPage from './ContectUs';
+import WebDevelopment from '../Services/Web';
+import SEOOptimization from '../Services/SEO';
+import MobileAppDevelopment from '../Services/Mobile';
+import DigitalMarketing from '../Services/Digital';
+import UIUXDesign from '../Services/Uiux';
+import AdminLogin from '../admin/AdminLogin';
+import OtpVerify from '../admin/OtpVerify';
+import AdminDashboard from '../admin/AdminDashboard';
+import NotFound from '../Components/NotFound';
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -17,6 +27,19 @@ const AllRoutes = () => {
         <Route path='/career' element={<Career/>} />
         <Route path='/about' element={<About/>} />
         <Route path='/contact' element={<ContactPage/>} />
+
+        <Route path='/service/web' element={<WebDevelopment/>} />
+        <Route path='/service/app' element={<MobileAppDevelopment/>} />
+        <Route path='/service/Digital' element={<DigitalMarketing/>} />
+        <Route path='/service/Seo' element={<SEOOptimization/>} />
+        <Route path='/service/Uiux' element={<UIUXDesign/>} />
+
+        
+        <Route path='/admin/login' element={<AdminLogin/>} />
+        <Route path='/admin/verify-otp' element={<OtpVerify/>} />
+        <Route path='/admin/dashboard' element={<AdminDashboard/>} />
+
+        <Route path='*' element={<NotFound/>} />
 
 
         <Route path='/footer' element={<Footer/>} />

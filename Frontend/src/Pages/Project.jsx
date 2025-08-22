@@ -1,10 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet-async"; // ✅ SEO
 import ContectBox from "../Components/ContectBox";
 import pizza from "../assets/Projectimg/salom pizza project.png";
 import me from "../assets/Projectimg/me_Project.png";
 import namo from "../assets/Projectimg/namobharat_Project.png";
 import Trans from "../assets/Projectimg/transport.png";
 import vellay from "../assets/Projectimg/vellaypani_project.png";
+import banner from "../assets/images/banner_bimfrox.png";
 
 const Projects = () => {
   const projectList = [
@@ -52,6 +54,34 @@ const Projects = () => {
 
   return (
     <>
+      {/* ✅ SEO Meta Tags */}
+      <Helmet>
+        <title>Projects | Bimfrox Creations</title>
+        <meta
+          name="description"
+          content="Explore our latest web development projects at Bimfrox, including Salom Pizza, Yellay Pani, Namobharat, TransportMe, and portfolio sites."
+        />
+        <meta
+          name="keywords"
+          content="Bimfrox projects, web development, portfolio, Salom Pizza, Yellay Pani, Namobharat, TransportMe, business websites"
+        />
+        <meta property="og:title" content="Our Projects - Bimfrox" />
+        <meta
+          property="og:description"
+          content="Check out Bimfrox's latest web development projects, featuring creative and modern designs."
+        />
+        <meta property="og:image" content={banner} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      {/* Seamless looping banner */}
+      <div className="overflow-hidden relative w-full bg-white">
+        <div className="flex animate-scroll">
+          <img src={banner} alt="banner" className="w-full flex-shrink-" />
+          <img src={banner} alt="banner" className="w-full flex-shrink-0" />
+        </div>
+      </div>
+
       <div className="p-10 md:p-20 bg-gray-50">
         {/* Heading */}
         <h1 className="text-center text-5xl font-light font-serif mb-3 animate-fade-in">

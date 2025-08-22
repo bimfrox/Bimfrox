@@ -1,83 +1,143 @@
-import React from 'react';
+import React from "react";
 import { NavLink } from "react-router-dom";
-
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async"; // ✅ Better Helmet package
+motion;
+// Images
 import web from "../assets/images/web_logo.png";
 import mo from "../assets/images/app_logo.png";
 import seo from "../assets/images/seo_logo.png";
 import digi from "../assets/images/Digi_logo.png";
 import uiux from "../assets/images/uiux_logo.png";
-import ContectBox from '../Components/ContectBox';
 
+import ContectBox from "../Components/ContectBox";
+
+// ✅ Service Data
 const servicesProvide = [
   {
     title: "Web Development",
     description:
-      "We create dynamic, responsive websites tailored to your business needs. From e-commerce platforms to personal blogs, we ensure a powerful online presence. Our team uses the latest technologies like React, Node.js, and Next.js to build secure, high-performing, and scalable solutions. Every project is designed with user experience in mind, ensuring smooth navigation, fast loading times, and visually appealing layouts that reflect your brand identity.",
+      "At BIMFROX, we build responsive, high-performing, and scalable websites tailored to your business goals. From e-commerce platforms to custom web apps, our team leverages React, Node.js, and Next.js to deliver secure, SEO-friendly, and future-ready solutions that reflect your brand identity.",
     image: web,
+    link: "/service/web",
+    alt: "Custom Web Development Solutions by BIMFROX",
   },
   {
     title: "Mobile App Development",
     description:
-      "We develop high-performance mobile applications for both Android and iOS platforms, designed to engage your audience and deliver seamless functionality. Our apps are optimized for speed, usability, and security, ensuring your users have an exceptional experience. Whether it’s a business app, e-commerce solution, or custom tool, we use cutting-edge frameworks like Flutter and React Native to bring your vision to life with precision.",
+      "We design and develop high-performance mobile apps for Android and iOS. Using Flutter and React Native, BIMFROX builds secure, scalable, and engaging apps for businesses, e-commerce, and startups—helping you connect with users anytime, anywhere.",
     image: mo,
+    link: "/service/app",
+    alt: "Mobile App Development Company BIMFROX",
   },
   {
     title: "UI/UX Design",
     description:
-      "We design intuitive, user-friendly, and visually stunning interfaces that blend creativity with usability. By understanding your target audience, we craft designs that are not only beautiful but also functional, guiding users effortlessly through your product. From wireframes and prototypes to final polished designs, our process ensures every detail enhances engagement and user satisfaction.",
+      "Our UI/UX design services combine creativity and usability to deliver seamless digital experiences. From wireframes to final prototypes, BIMFROX ensures intuitive navigation, engaging visuals, and user-centered interfaces that enhance customer satisfaction and brand loyalty.",
     image: uiux,
+    link: "/service/uiux",
+    alt: "UI/UX Design Services for Businesses",
   },
   {
     title: "Digital Marketing",
     description:
-      "We help you boost brand visibility and engagement through targeted marketing strategies. Our services include social media management, content marketing, email campaigns, and paid advertising that delivers measurable results. By analyzing your audience and market trends, we create campaigns that maximize reach, improve conversions, and strengthen your brand presence across multiple platforms.",
+      "BIMFROX helps brands grow online with data-driven digital marketing strategies. From social media campaigns, content marketing, and email automation to PPC ads, we deliver measurable results—boosting visibility, engagement, and conversions.",
     image: digi,
+    link: "/service/digital",
+    alt: "Digital Marketing Services by BIMFROX",
   },
   {
     title: "SEO Optimization",
     description:
-      "Our SEO services help your website rank higher on search engines, driving organic traffic and increasing visibility. We use advanced keyword research, on-page optimization, link building, and technical SEO strategies to improve your rankings. By continuously monitoring and adjusting, we ensure long-term results that help your business stay ahead of the competition and reach its target audience effectively.",
+      "Our SEO experts help your website rank higher on search engines through keyword research, on-page optimization, technical SEO, and link building. BIMFROX ensures long-term organic traffic growth and competitive advantage with continuous monitoring and updates.",
     image: seo,
+    link: "/service/seo",
+    alt: "SEO Optimization Services by BIMFROX",
   },
 ];
 
 const Service = () => {
   return (
     <div className="bg-gray-50 py-16 px-6">
+      {/* ✅ SEO Meta Tags */}
+      <Helmet>
+        <title>Our Services | BIMFROX Digital Solutions</title>
+        <meta
+          name="description"
+          content="BIMFROX provides professional web development, mobile app development, UI/UX design, digital marketing, and SEO optimization. Scalable, AI-powered solutions for startups and enterprises."
+        />
+        <meta
+          name="keywords"
+          content="web development company, mobile app development services, UI UX design, digital marketing agency, SEO experts, BIMFROX services"
+        />
+        <meta property="og:title" content="Our Services | BIMFROX Digital Solutions" />
+        <meta
+          property="og:description"
+          content="Explore BIMFROX services: web development, mobile apps, UI/UX design, digital marketing, and SEO optimization. Helping brands grow with AI-powered digital solutions."
+        />
+        <meta property="og:image" content={web} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bimfrox.com/services" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       {/* Main Heading */}
-      <h1 className="text-center text-5xl font-light font-serif text-gray-800">
-        Services
-      </h1>
+      <header>
+        <motion.h1
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center text-5xl font-light font-serif text-gray-800"
+        >
+          Our Services
+        </motion.h1>
 
-      {/* Subheading */}
-      <p className="text-center p-5 text-5xl font-semibold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-        Turning Ideas into Reality
-      </p>
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="text-center p-5 text-5xl font-extrabold bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 text-transparent bg-clip-text"
+        >
+          Turning Ideas into Reality
+        </motion.p>
 
-      {/* Description */}
-      <p className="text-center max-w-2xl mx-auto mt-4 text-gray-500 leading-relaxed">
-        We provide innovative web solutions tailored to your needs.
-        From sleek designs to robust development, we ensure your brand
-        stands out in the digital world. Let’s create something amazing together!
-      </p>
+        {/* Intro Description */}
+        <p className="text-center max-w-2xl mx-auto mt-4 text-gray-600 leading-relaxed">
+          At <strong>BIMFROX</strong>, we deliver innovative, AI-powered digital solutions
+          designed for businesses of all sizes. From sleek UI/UX designs to robust web development,
+          our services help you grow your brand and reach new heights in the digital world.
+        </p>
+      </header>
 
-      {/* Buttons */}
+      {/* CTA Buttons */}
       <div className="flex justify-center gap-6 mt-8">
-        <button className="bg-green-800 text-white px-6 py-3 rounded-full shadow-lg hover:bg-green-900 transition duration-300">
-          <NavLink to="/contact">Contact Us</NavLink>
-        </button>
-        <button className="bg-transparent border-2 border-green-800 text-gray-900 px-6 py-3 rounded-full hover:bg-green-900 hover:text-white transition duration-300">
-          <NavLink to="/projects">View Projects</NavLink>
-        </button>
+        <NavLink to="/contact">
+          <button className="bg-green-700 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 hover:bg-green-900 transition duration-300">
+            📞 Start Your Project
+          </button>
+        </NavLink>
+        <NavLink to="/projects">
+          <button className="bg-transparent border-2 border-green-700 text-gray-900 px-6 py-3 rounded-full hover:bg-green-900 hover:text-white hover:scale-105 transition duration-300">
+            🌟 View Our Projects
+          </button>
+        </NavLink>
       </div>
 
-      {/* Service Sections */}
-      <div className="my-20 space-y-20 max-w-7xl mx-auto">
+      {/* Services Section */}
+      <main className="my-20 space-y-20 max-w-7xl mx-auto">
         {servicesProvide.map((service, index) => (
-          <div
+          <motion.article
             key={index}
-            className={`flex flex-col md:flex-row items-center gap-10 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''
-              }`}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className={`flex flex-col md:flex-row items-center gap-10 ${
+              index % 2 !== 0 ? "md:flex-row-reverse" : ""
+            }`}
           >
             {/* Text Section */}
             <div className="flex-1">
@@ -85,23 +145,34 @@ const Service = () => {
                 {service.title}
               </h2>
               <p className="mt-4 text-gray-600">{service.description}</p>
-              <button className="mt-6 inline-block bg-purple-600 text-white px-5 py-2 rounded-full shadow hover:bg-purple-700 transition duration-300">
-                Explore More
-              </button>
+              <NavLink to={service.link}>
+                <button className="mt-6 inline-block bg-purple-600 text-white px-5 py-2 rounded-full shadow hover:scale-105 hover:bg-purple-700 transition duration-300">
+                  Explore More
+                </button>
+              </NavLink>
             </div>
 
             {/* Image Section */}
-            <div className="flex-1">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="flex-1"
+            >
               <img
                 src={service.image}
-                alt={service.title}
-                className="w-full h-80 object-cover rounded-xl shadow-lg"
+                alt={service.alt}
+                loading="lazy" // ✅ SEO + Performance
+                className="w-full h-80 object-cover rounded-xl shadow-lg hover:shadow-2xl transition"
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.article>
         ))}
-      </div>
-      <ContectBox />
+      </main>
+
+      {/* Contact Box */}
+      <footer>
+        <ContectBox />
+      </footer>
     </div>
   );
 };
