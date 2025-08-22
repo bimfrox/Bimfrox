@@ -5,7 +5,7 @@ import nodemailer from "nodemailer";
 const router = express.Router();
 
 // POST /contact
-router.post("/api", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { fullName, email, number, serviceType, budget } = req.body;
 
@@ -45,7 +45,7 @@ router.post("/api", async (req, res) => {
 });
 
 // GET /contact (for admin dashboard)
-router.get("/api", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });
     res.json({ success: true, contacts });

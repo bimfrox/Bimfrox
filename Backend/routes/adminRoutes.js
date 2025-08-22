@@ -22,6 +22,8 @@ router.post("/login", async (req, res) => {
     admin.otpExpiry = Date.now() + 5 * 60 * 1000;
     await admin.save();
 
+    console.log(otp)
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
@@ -40,7 +42,6 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 });
-
 // POST /admin/verify-otp
 router.post("/verify-otp", async (req, res) => {
   try {
