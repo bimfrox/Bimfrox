@@ -1,8 +1,7 @@
 // src/Pages/Client.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
-motion;
+motion
 // Sample client logos
 import am from "../assets/Am Finance & consultancy.png";
 import jjb from "../assets/jjb.png";
@@ -14,6 +13,25 @@ const logos = [am, jjb, me, tulsi, vally];
 
 const Client = () => {
   const logosLoop = [...logos, ...logos, ...logos];
+
+  // ✅ SEO with useEffect instead of Helmet
+  useEffect(() => {
+    document.title = "Our Clients | BIMFROX - Trusted by Startups & Enterprises";
+
+    const metaDescription = document.querySelector("meta[name='description']");
+    if (metaDescription)
+      metaDescription.setAttribute(
+        "content",
+        "Discover why startups, creators, and enterprises trust BIMFROX. We deliver AI-powered digital solutions, scalable platforms, and future-ready automation."
+      );
+
+    const metaKeywords = document.querySelector("meta[name='keywords']");
+    if (metaKeywords)
+      metaKeywords.setAttribute(
+        "content",
+        "BIMFROX clients, AI-powered solutions, scalable digital platforms, enterprise software, automation, startup technology partner"
+      );
+  }, []);
 
   const scrollAnimation = {
     animate: {
@@ -34,22 +52,6 @@ const Client = () => {
       className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16"
       aria-label="Trusted Clients and Partners of BIMFROX"
     >
-      {/* SEO Metadata */}
-      <Helmet>
-        <title>Our Clients | BIMFROX - Trusted by Startups & Enterprises</title>
-        <meta
-          name="description"
-          content="Discover why startups, creators, and enterprises trust BIMFROX. We deliver AI-powered digital solutions, scalable platforms, and future-ready automation."
-        />
-        <meta
-          name="keywords"
-          content="BIMFROX clients, AI-powered solutions, scalable digital platforms, enterprise software, automation, startup technology partner"
-        />
-        <meta property="og:title" content="BIMFROX Clients & Partners" />
-        <meta property="og:description" content="Startups grow and enterprises stay ahead with BIMFROX. Trusted by innovators for scalable AI-powered digital solutions." />
-        <meta property="og:image" content={logos[0]} />
-      </Helmet>
-
       {/* Section Heading */}
       <header className="text-center mb-8 sm:mb-12 px-4">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-snug">
@@ -60,10 +62,13 @@ const Client = () => {
           At <strong>BIMFROX</strong>, we deliver more than just code — we
           engineer <strong>scalable digital platforms</strong> that drive real
           growth. From <em>AI-powered solutions</em> to{" "}
-          <em>intelligent automation</em> and <em>future-ready technology</em>, 
-          businesses trust us to turn bold ideas into lasting success.
+          <em>intelligent automation</em> and{" "}
+          <em>future-ready technology</em>, businesses trust us to turn bold
+          ideas into lasting success.
         </p>
-        <p className="mt-2 text-gray-500 italic text-sm sm:text-base">"Innovation isn’t optional — it’s our foundation."</p>
+        <p className="mt-2 text-gray-500 italic text-sm sm:text-base">
+          "Innovation isn’t optional — it’s our foundation."
+        </p>
         <sub className="mt-2 text-gray-500 italic text-xs sm:text-sm">
           That’s why startups, creators, and enterprises choose BIMFROX as their
           digital partner.
