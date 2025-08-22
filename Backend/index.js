@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import contactRoutes from "./routes/contactRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
@@ -9,12 +11,12 @@ import adminRoutes from "./routes/adminRoutes.js";
 dotenv.config();
 const app = express();
 
-// ✅ Fix CORS (remove trailing slash in origin, and use array properly)
+// ✅ CORS
 app.use(
   cors({
     origin: [
-      "https://bimfrox-ankit.onrender.com", // frontend (Render deployed React)
-      "http://localhost:5173",              // local dev React
+      "https://bimfrox-ankit.onrender.com", // Render frontend
+      "http://localhost:5173",              // Local dev
     ],
     credentials: true,
   })
@@ -22,7 +24,7 @@ app.use(
 
 app.use(express.json());
 
-// Routes
+// ✅ API Routes
 app.use("/contact", contactRoutes);
 app.use("/admin", adminRoutes);
 
@@ -31,6 +33,17 @@ mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
+
+// ✅ Serve React frontend
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "../Frontend/dist"))); // Adjust if your build folder is elsewhere
+
+// ✅ Catch-all route for React Router
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Frontend/dist", "index.html"));
+});
 
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
