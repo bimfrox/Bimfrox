@@ -5,6 +5,8 @@ import ind from "../assets/USES/INDUSTRIES.png";
 import social from "../assets/USES/social media.png";
 import team from "../assets/USES/team.png";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Use Vite env variable
+
 const stats = [
   { number: "10+", label: "Happy Clients Served", icon: happy },
   { number: "100+", label: "Social Media Posts", icon: social },
@@ -39,7 +41,7 @@ const ContactPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("https://bimfrox-p3a9.onrender.com/contact", {
+      const response = await fetch(`${API_BASE_URL}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -57,10 +59,11 @@ const ContactPage = () => {
           budget: "",
         });
       } else {
-        toast.error("❌ " + data.message);
+        toast.error("❌ " + (data.message || "Failed to submit form"));
       }
     } catch (error) {
-      toast.error("❌ Error submitting form. Try again later.", error);
+      console.error("Error submitting contact form:", error);
+      toast.error("❌ Error submitting form. Try again later.");
     }
 
     setLoading(false);
@@ -87,7 +90,6 @@ const ContactPage = () => {
             className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             required
           />
-
           <input
             type="email"
             id="email"
@@ -98,7 +100,6 @@ const ContactPage = () => {
             className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             required
           />
-
           <input
             type="tel"
             id="number"
@@ -109,7 +110,6 @@ const ContactPage = () => {
             className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             required
           />
-
           <select
             id="serviceType"
             name="serviceType"
@@ -124,7 +124,6 @@ const ContactPage = () => {
             <option value="SEO Optimization">SEO Optimization</option>
             <option value="UI/UX Design">UI/UX Design</option>
           </select>
-
           <input
             type="text"
             id="budget"
@@ -134,7 +133,6 @@ const ContactPage = () => {
             placeholder="Budget (e.g. ₹1000 - ₹5000)"
             className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
           />
-
           <button
             type="submit"
             disabled={loading}

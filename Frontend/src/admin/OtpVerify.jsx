@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const OtpVerify = () => {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-
-  // Ensure username exists in state
   const username = location.state?.username;
 
   useEffect(() => {
@@ -20,23 +20,20 @@ const OtpVerify = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (otp.length !== 6 || !/^\d{6}$/.test(otp)) {
       toast.error("⚠️ Please enter a valid 6-digit OTP");
       return;
     }
 
     setLoading(true);
-
     try {
-      const res = await fetch("https://bimfrox-p3a9.onrender.com/admin/verify-otp", {
+      const res = await fetch(`${API_BASE_URL}/admin/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, otp }),
       });
 
       const data = await res.json();
-
       if (data.success) {
         localStorage.setItem("adminToken", data.token);
         toast.success("✅ OTP Verified!");

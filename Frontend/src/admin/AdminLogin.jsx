@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // use Vite env variable
+
 const AdminLogin = () => {
   const [form, setForm] = useState({ username: "", password: "" });
   const [loading, setLoading] = useState(false);
@@ -16,22 +18,23 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      console.log("Sending:", form);
-      const res = await fetch("https://bimfrox-p3a9.onrender.com/admin/login", {
+      const res = await fetch(`${API_BASE_URL}/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
       const data = await res.json();
+
       if (data.success) {
         toast.success("✅ OTP sent to your email");
         navigate("/admin/verify-otp", { state: { username: form.username } });
       } else {
-        toast.error("❌ " + data.message);
+        toast.error("❌ " + (data.message || "Login failed"));
       }
     } catch (err) {
-      toast.error("❌ Error logging in",err);
+      console.error("Login error:", err);
+      toast.error("❌ Server error. Please try again.");
     }
 
     setLoading(false);
@@ -63,7 +66,9 @@ const AdminLogin = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-green-600 text-white py-2 rounded-lg"
+          className={`w-full py-2 rounded-lg text-white ${
+            loading ? "bg-green-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
+          } transition`}
         >
           {loading ? "Sending OTP..." : "Login"}
         </button>

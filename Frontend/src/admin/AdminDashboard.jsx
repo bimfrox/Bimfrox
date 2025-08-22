@@ -2,12 +2,13 @@ import React, { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const AdminDashboard = () => {
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // 🔄 Fetch contacts (protected route)
   const fetchContacts = useCallback(async () => {
     const token = localStorage.getItem("adminToken");
 
@@ -19,8 +20,7 @@ const AdminDashboard = () => {
 
     try {
       setLoading(true);
-
-      const res = await fetch("https://bimfrox-p3a9.onrender.com/contact", {
+      const res = await fetch(`${API_BASE_URL}/contact`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -36,8 +36,6 @@ const AdminDashboard = () => {
       }
 
       const data = await res.json();
-
-      // Support both backend sending { success, contacts } or raw array
       if (data.success && Array.isArray(data.contacts)) {
         setContacts(data.contacts);
       } else if (Array.isArray(data)) {
@@ -54,7 +52,6 @@ const AdminDashboard = () => {
     }
   }, [navigate]);
 
-  // ⏳ Run on mount
   useEffect(() => {
     const token = localStorage.getItem("adminToken");
     if (!token) {
@@ -65,7 +62,6 @@ const AdminDashboard = () => {
     }
   }, [fetchContacts, navigate]);
 
-  // 🚪 Logout
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
     toast.success("✅ Logged out successfully");
@@ -74,7 +70,6 @@ const AdminDashboard = () => {
 
   return (
     <div className="p-10">
-      {/* Top bar */}
       <div className="flex justify-between items-center mb-6 flex-wrap gap-3">
         <h1 className="text-3xl font-bold">📊 Admin Dashboard</h1>
         <div className="space-x-3 flex flex-wrap gap-2">
@@ -93,7 +88,6 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      {/* Table */}
       <div className="bg-white shadow-lg rounded-lg p-6 overflow-x-auto">
         {loading ? (
           <p className="text-gray-600 text-center">⏳ Loading contacts...</p>
