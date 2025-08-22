@@ -1,5 +1,4 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import ContectBox from '../Components/ContectBox';
@@ -10,21 +9,30 @@ const CareerPage = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  // ✅ Set SEO meta tags manually
+  useEffect(() => {
+    document.title = "Careers at Bimfrox | Join Our Startup Team";
+
+    const description = document.createElement("meta");
+    description.name = "description";
+    description.content =
+      "Explore career opportunities at Bimfrox, a new-age startup. Learn about our hiring process, benefits, and how you can join our passionate team.";
+    document.head.appendChild(description);
+
+    const keywords = document.createElement("meta");
+    keywords.name = "keywords";
+    keywords.content =
+      "Bimfrox careers, startup jobs, tech jobs, work at Bimfrox, join Bimfrox, hiring process";
+    document.head.appendChild(keywords);
+
+    return () => {
+      document.head.removeChild(description);
+      document.head.removeChild(keywords);
+    };
+  }, []);
+
   return (
     <main className="bg-white text-gray-800">
-      {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Careers at Bimfrox | Join Our Startup Team</title>
-        <meta
-          name="description"
-          content="Explore career opportunities at Bimfrox, a new-age startup. Learn about our hiring process, benefits, and how you can join our passionate team."
-        />
-        <meta
-          name="keywords"
-          content="Bimfrox careers, startup jobs, tech jobs, work at Bimfrox, join Bimfrox, hiring process"
-        />
-      </Helmet>
-
       {/* Hero Section */}
       <header className="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-16 bg-gradient-to-r from-green-900 to-green-700 text-white">
         <motion.div

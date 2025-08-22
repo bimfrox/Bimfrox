@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet-async"; // ✅ for SEO metadata
 import { toast } from "react-toastify";
 import happy from "../assets/USES/happy client.png";
 import ind from "../assets/USES/INDUSTRIES.png";
@@ -69,17 +68,6 @@ const ContactPage = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto py-12 px-5 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-      {/* ✅ SEO Meta Tags */}
-      <Helmet>
-        <title>Contact Us | Bimfrox</title>
-        <meta
-          name="description"
-          content="Get in touch with Bimfrox for web development, app development, SEO optimization, and digital marketing services. Let’s build your digital success together."
-        />
-        <meta name="keywords" content="Contact Bimfrox, Web Development, App Development, SEO, Digital Marketing, UI UX Design" />
-        <link rel="canonical" href="https://yourwebsite.com/contact" />
-      </Helmet>
-
       {/* Left Column - Contact Form */}
       <div className="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-xl border border-green-100">
         <h1 className="text-4xl font-extrabold mb-6 text-gray-800">
@@ -89,7 +77,6 @@ const ContactPage = () => {
           Fill out the form below and our team will reach out to you within 24 hours.
         </p>
         <form onSubmit={handleSubmit} className="space-y-5">
-          <label htmlFor="fullName" className="sr-only">Full Name</label>
           <input
             type="text"
             id="fullName"
@@ -101,7 +88,6 @@ const ContactPage = () => {
             required
           />
 
-          <label htmlFor="email" className="sr-only">Email</label>
           <input
             type="email"
             id="email"
@@ -113,7 +99,6 @@ const ContactPage = () => {
             required
           />
 
-          <label htmlFor="number" className="sr-only">Phone Number</label>
           <input
             type="tel"
             id="number"
@@ -125,7 +110,6 @@ const ContactPage = () => {
             required
           />
 
-          <label htmlFor="serviceType" className="sr-only">Service Type</label>
           <select
             id="serviceType"
             name="serviceType"
@@ -141,7 +125,6 @@ const ContactPage = () => {
             <option value="UI/UX Design">UI/UX Design</option>
           </select>
 
-          <label htmlFor="budget" className="sr-only">Budget</label>
           <input
             type="text"
             id="budget"

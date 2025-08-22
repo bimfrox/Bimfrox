@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 
 import web from "../assets/images/web_logo.png";
 import mo from "../assets/images/app_logo.png";
@@ -32,7 +31,7 @@ const ContectBox = () => {
       aria-label="BIMFROX Business Growth Section"
     >
       {/* SEO Metadata */}
-      <Helmet>
+      <>
         <title>Skyrocket Your Business with AI-Powered Software Solutions | BIMFROX</title>
         <meta
           name="description"
@@ -45,7 +44,7 @@ const ContectBox = () => {
         <meta property="og:title" content="BIMFROX - AI Powered Business Solutions" />
         <meta property="og:description" content="Skyrocket your business with BIMFROX: AI-powered web development, mobile apps, SEO optimization, and digital marketing." />
         <meta property="og:image" content={slides[currentSlide]} />
-      </Helmet>
+      </>
 
       {/* Decorative spinning circle */}
       <div className="absolute -top-12 -left-12 sm:-top-16 sm:-left-16 w-32 sm:w-48 h-32 sm:h-48 border-4 border-green-400 rounded-full animate-spin-slower opacity-20"></div>

@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import { Helmet } from "react-helmet-async";
 motion;
 // ✅ Lazy load components
 const FAQ = lazy(() => import("../Components/Faqs"));
@@ -19,10 +18,11 @@ import social from "../assets/USES/social media.png";
 import team from "../assets/USES/team.png";
 import aboutImg from "../assets/Team/teamb.jpg";
 
-import Aryan from "../assets/Team/IMG_20250815_121337.jpg"
+import Aryan from "../assets/Team/IMG_20250815_121337.jpg";
 import mehul from "../assets/Team/IMG_20250815_121139.jpg";
 import Ankit from "../assets/Team/IMG_20250815_121116.jpg";
 import Rahul from "../assets/Team/rahulrai.jpg";
+
 // Animation Variants
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -36,28 +36,14 @@ const fadeUp = {
 const teamMembers = [
   { name: "Mehul Jdhav", role: "CFO & Data Analyst", image: mehul },
   { name: "Ankit Maurya", role: "MERN Developer", image: Ankit },
-  { name: "Aryan Chaursiya", role: "Graphics designer", image: Aryan },
-  { name: "Rahul Rai", role: "Frotend Devloper", image: Rahul },
-
+  { name: "Aryan Chaursiya", role: "Graphics Designer", image: Aryan },
+  { name: "Rahul Rai", role: "Frontend Developer", image: Rahul },
 ];
 
 export default function About() {
   return (
     <div className="bg-white text-gray-800">
-      {/* SEO Helmet */}
-      <Helmet>
-        <title>About BIMFROX | Web Development & Digital Solutions</title>
-        <meta
-          name="description"
-          content="Learn about BIMFROX — a startup providing web development, marketing, and automation solutions to help businesses achieve digital success."
-        />
-        <meta property="og:title" content="About BIMFROX | Web Solutions" />
-        <meta
-          property="og:description"
-          content="Meet the BIMFROX team, our services, and how we help businesses achieve digital success."
-        />
-        <link rel="canonical" href="https://www.yourdomain.com/about" />
-      </Helmet>
+      {/* ✅ Removed Helmet to avoid version issues */}
 
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row items-center gap-8 max-w-7xl mx-auto px-6 py-16">
@@ -85,11 +71,9 @@ export default function About() {
           <p className="mb-8 text-lg text-gray-600 leading-relaxed">
             BIMFROX is a modern startup helping businesses achieve{" "}
             <span className="font-semibold text-green-600">digital success</span>{" "}
-            through web development, digital marketing, and automation solutions. With a
-            passionate team driven by innovation, we deliver impactful and measurable results
-            tailored to your unique business goals. Our mission is simple — to empower startups,
-            creators, and enterprises with technology that fuels growth and long-term success.
-
+            through web development, digital marketing, and automation solutions.
+            With a passionate team driven by innovation, we deliver impactful and
+            measurable results tailored to your unique business goals.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -116,9 +100,9 @@ export default function About() {
             Numbers That Speak for Themselves
           </h2>
           <p className="text-gray-600 text-lg">
-            At BIMFROX, every project we deliver adds to our growing track record of success. From
-            happy clients to impactful campaigns, these milestones inspire us to push
-            boundaries and achieve more every day.
+            At BIMFROX, every project we deliver adds to our growing track record
+            of success. From happy clients to impactful campaigns, these milestones
+            inspire us to push boundaries and achieve more every day.
           </p>
         </motion.div>
 
@@ -145,9 +129,10 @@ export default function About() {
                 loading="lazy"
                 className="w-16 mx-auto mb-4 drop-shadow-md"
               />
-              <h3 className="text-3xl font-extrabold text-green-600">{item.value}</h3>
+              <h3 className="text-3xl font-extrabold text-green-600">
+                {item.value}
+              </h3>
               <p className="text-gray-600 mt-1">{item.title}</p>
-              <span className="absolute inset-0 border-2 border-transparent hover:border-green-200 rounded-2xl transition"></span>
             </motion.article>
           ))}
         </div>
@@ -165,9 +150,10 @@ export default function About() {
           Meet Our <span className="text-green-600">Team</span>
         </motion.h2>
         <p className="max-w-3xl mx-auto text-center text-gray-600 mb-12">
-          Behind every successful project is a team of passionate innovators. <span className=" font-bold text-black" >At BIMFROX, </span> our
-          people combine creativity, expertise, and dedication to craft solutions that are not
-          just functional, but also truly impactful and future-ready.
+          Behind every successful project is a team of passionate innovators.{" "}
+          <span className="font-bold text-black">At BIMFROX,</span> our people
+          combine creativity, expertise, and dedication to craft solutions that
+          are not just functional, but also truly impactful and future-ready.
         </p>
 
         {/* Mobile Carousel */}
@@ -185,14 +171,12 @@ export default function About() {
                   whileHover={{ y: -5, scale: 1.03 }}
                   className="bg-white rounded-2xl shadow-lg overflow-hidden group max-w-xs mx-auto"
                 >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      loading="lazy"
-                      className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   <div className="p-6 text-center">
                     <h3 className="text-xl font-semibold">{member.name}</h3>
                     <p className="text-green-600">{member.role}</p>
@@ -216,19 +200,16 @@ export default function About() {
               whileHover={{ y: -8, scale: 1.05 }}
               className="bg-white rounded-2xl shadow-lg overflow-hidden group relative"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  loading="lazy"
-                  className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
+              <img
+                src={member.image}
+                alt={member.name}
+                loading="lazy"
+                className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
               <div className="p-6 text-center">
                 <h3 className="text-xl font-semibold">{member.name}</h3>
                 <p className="text-green-600">{member.role}</p>
               </div>
-              <span className="absolute inset-0 border-2 border-transparent group-hover:border-green-300 rounded-2xl transition"></span>
             </motion.div>
           ))}
         </div>

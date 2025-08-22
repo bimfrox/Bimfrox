@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async"; // ✅ Better Helmet package
 motion;
 // Images
 import web from "../assets/images/web_logo.png";
@@ -59,28 +58,6 @@ const servicesProvide = [
 const Service = () => {
   return (
     <div className="bg-gray-50 py-16 px-6">
-      {/* ✅ SEO Meta Tags */}
-      <Helmet>
-        <title>Our Services | BIMFROX Digital Solutions</title>
-        <meta
-          name="description"
-          content="BIMFROX provides professional web development, mobile app development, UI/UX design, digital marketing, and SEO optimization. Scalable, AI-powered solutions for startups and enterprises."
-        />
-        <meta
-          name="keywords"
-          content="web development company, mobile app development services, UI UX design, digital marketing agency, SEO experts, BIMFROX services"
-        />
-        <meta property="og:title" content="Our Services | BIMFROX Digital Solutions" />
-        <meta
-          property="og:description"
-          content="Explore BIMFROX services: web development, mobile apps, UI/UX design, digital marketing, and SEO optimization. Helping brands grow with AI-powered digital solutions."
-        />
-        <meta property="og:image" content={web} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bimfrox.com/services" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
-
       {/* Main Heading */}
       <header>
         <motion.h1

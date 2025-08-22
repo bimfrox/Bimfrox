@@ -7,7 +7,6 @@ import AnimatedCursor from "./Components/Cursour";
 import LogoLoader from "./Components/Loder";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { HelmetProvider } from "react-helmet-async";
 import WhatsAppFloat from "./Components/Whatsapp";
 
 function App() {
@@ -18,19 +17,18 @@ function App() {
   const hideLayout = location.pathname.startsWith("/admin");
 
   return (
-    <><HelmetProvider>
+    <>
       <ToastContainer position="top-center" autoClose={3000} />
       {loading && <LogoLoader onFinish={() => setLoading(false)} />}
       {!loading && (
         <>
           {!hideLayout && <Navbar />}
           <AllRoutes />
-          <WhatsAppFloat/>
+          <WhatsAppFloat />
           <AnimatedCursor />
           {!hideLayout && <Footer />}
         </>
       )}
-      </HelmetProvider>
     </>
   );
 }
