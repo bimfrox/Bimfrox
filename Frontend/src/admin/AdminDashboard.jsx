@@ -7,7 +7,7 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // 🔄 Fetch contacts
+  // 🔄 Fetch contacts (admin protected)
   const fetchContacts = useCallback(async () => {
     const token = localStorage.getItem("adminToken");
 
@@ -23,7 +23,7 @@ const AdminDashboard = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -36,8 +36,11 @@ const AdminDashboard = () => {
 
       const data = await res.json();
 
-      if (data.success) {
+      if (data.success && data.contacts) {
         setContacts(data.contacts);
+      } else if (Array.isArray(data)) {
+        // in case backend directly sends array
+        setContacts(data);
       } else {
         toast.error("❌ Failed to fetch contacts");
       }
@@ -115,7 +118,9 @@ const AdminDashboard = () => {
                   <td className="p-3">{c.serviceType}</td>
                   <td className="p-3">{c.budget}</td>
                   <td className="p-3">
-                    {new Date(c.createdAt).toLocaleDateString()}
+                    {c.createdAt
+                      ? new Date(c.createdAt).toLocaleDateString()
+                      : "—"}
                   </td>
                 </tr>
               ))}
