@@ -34,7 +34,7 @@ const fadeUp = {
 };
 
 const teamMembers = [
-  { name: "Mehul Jdhav", role: "CFO & Data Analyst", image: mehul },
+  { name: "Mehul Jadhav", role: "CFO & Data Analyst", image: mehul },
   { name: "Ankit Maurya", role: "MERN Developer", image: Ankit },
   { name: "Aryan Chaursiya", role: "Graphics Designer", image: Aryan },
   { name: "Rahul Rai", role: "Frontend Developer", image: Rahul },

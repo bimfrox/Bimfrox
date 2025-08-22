@@ -43,6 +43,16 @@ mongoose
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
+
+  const _dirname = path.resolve();
+  const frontenddist = path.join(_dirname, "../Frontend/dist");
+  app.use(express.static(frontenddist));
+  app.get("/",(req, res) => {
+    res.sendFile(path.sendFile(path.join(frontenddist, "index.html")));
+  }
+)
+
+
 // ========================
 // Start server
 // ========================
