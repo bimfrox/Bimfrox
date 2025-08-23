@@ -40,8 +40,8 @@ mongoose
 // ========================
 // API Routes (always prefix with /api)
 // ========================
-app.use("/api/contact", contactRoutes);
-app.use("/api/admin", adminRoutes);
+app.use("/contact", contactRoutes);
+app.use("/admin", adminRoutes);
 
 // ========================
 // Serve React frontend (Vite build)
