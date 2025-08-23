@@ -14,7 +14,7 @@ function App() {
   const location = useLocation();
 
   // Hide Navbar & Footer on admin routes
-  const hideLayout = location.pathname.startsWith("/api");
+  const hideLayout = location.pathname.startsWith("/admin");
 
   return (
     <>

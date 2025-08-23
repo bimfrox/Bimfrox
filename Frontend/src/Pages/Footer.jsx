@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -35,19 +37,19 @@ const Footer = () => {
           </h2>
           <ul className="space-y-2 list-disc list-inside">
             {[
-              { name: "Web Development", link: "/services/web-development" },
-              { name: "Mobile App Development", link: "/services/app-development" },
-              { name: "UI/UX Design", link: "/services/ui-ux" },
-              { name: "Digital Marketing", link: "/services/digital-marketing" },
-              { name: "SEO Optimization", link: "/services/seo" },
+              { name: "Web Development", link: "/service/web" },
+              { name: "Mobile App Development", link: "/service/app" },
+              { name: "UI/UX Design", link: "/service/Uiux" },
+              { name: "Digital Marketing", link: "//service/Digital" },
+              { name: "SEO Optimization", link: "/service/Seo" },
             ].map((service, i) => (
               <li key={i}>
-                <a
-                  href={service.link}
+                <NavLink
+                  to={service.link}
                   className="hover:text-green-300 transition cursor-pointer"
                 >
                   {service.name}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -108,6 +110,9 @@ const Footer = () => {
                 {item.icon}
               </a>
             ))}
+            <NavLink to="/admin/login">
+              Admin    
+        </NavLink>
           </div>
         </div>
       </div>
@@ -132,6 +137,7 @@ const Footer = () => {
         >
           Terms & Conditions
         </a>
+
       </div>
     </footer>
   );
