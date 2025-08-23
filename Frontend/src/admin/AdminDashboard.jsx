@@ -20,7 +20,7 @@ const AdminDashboard = () => {
 
     try {
       setLoading(true);
-      const res = await fetch(`${API_BASE_URL}/contact`, {
+      const res = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

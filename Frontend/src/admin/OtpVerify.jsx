@@ -27,7 +27,7 @@ const OtpVerify = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/admin/verify-otp`, {
+      const res = await fetch(`${API_BASE_URL}/api/admin/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, otp }),
