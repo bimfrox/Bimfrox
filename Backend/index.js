@@ -38,7 +38,7 @@ mongoose
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
 // ========================
-// API Routes (prefix /api to avoid conflict with frontend)
+// API Routes (always prefix with /api)
 // ========================
 app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
@@ -50,15 +50,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const frontendDist = path.join(__dirname, "../Frontend/dist");
 
-// Serve static files first
+// Serve static files
 app.use(express.static(frontendDist));
 
-// Catch-all for React Router (must come after API routes)
-// Works with path-to-regexp v6
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(frontendDist, "index.html"));
+// ✅ Catch-all for React Router (Express 5 compatible)
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(frontendDist, "index.html"));
 });
-
 
 // ========================
 // Start server
