@@ -44,18 +44,18 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
 
 // ========================
-// Serve React frontend (Vite)
+// Serve React frontend (Vite build)
 // ========================
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const frontendDist = path.join(__dirname, "../Frontend/dist");
+const frontendDist = path.join(__dirname, "../Frontend/dist/index.html");
 
 // Serve static files
 app.use(express.static(frontendDist));
 
-// ✅ Catch-all for React Router (Express 5 compatible)
+// ✅ Catch-all to let React Router handle routing
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(frontendDist, "index.html"));
+  res.sendFile(path.resolve(frontendDist));
 });
 
 // ========================

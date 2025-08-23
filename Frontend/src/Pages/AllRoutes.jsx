@@ -35,9 +35,9 @@ const AllRoutes = () => {
         <Route path='/service/Uiux' element={<UIUXDesign/>} />
 
         
-        <Route path='/api/admin/login' element={<AdminLogin/>} />
-        <Route path='/api/admin/verify-otp' element={<OtpVerify/>} />
-        <Route path='/api/admin/dashboard' element={<AdminDashboard/>} />
+        <Route path='/admin/login' element={<AdminLogin/>} />
+        <Route path='/admin/verify-otp' element={<OtpVerify/>} />
+        <Route path='/admin/dashboard' element={<AdminDashboard/>} />
 
         <Route path='*' element={<NotFound/>} />
 
