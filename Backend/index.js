@@ -54,9 +54,11 @@ const frontendDist = path.join(__dirname, "../Frontend/dist");
 app.use(express.static(frontendDist));
 
 // Catch-all for React Router (must come after API routes)
-app.get("*", (req, res) => {
+// Works with path-to-regexp v6
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(frontendDist, "index.html"));
 });
+
 
 // ========================
 // Start server
