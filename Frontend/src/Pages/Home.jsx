@@ -12,9 +12,10 @@ import SEO from "../Components/Seo";
 
 motion;
 
+
 const Home = () => {
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       {/* ✅ SEO Section */}
       <SEO
         title="BIMFROX - Empowering Digital Growth"
@@ -25,12 +26,12 @@ const Home = () => {
       />
 
       {/* Hero / Slider Section */}
-      <section className="relative">
+      <section className="">
         <Slide />
       </section>
 
       {/* Trust Section */}
-      <section className="bg-gray-50 py-12">
+      <section className="bg-gray-50">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +42,7 @@ const Home = () => {
       </section>
 
       {/* Clients */}
-      <section className="py-12">
+      <section className="">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -52,7 +53,7 @@ const Home = () => {
       </section>
 
       {/* Reviews */}
-      <section className="bg-gray-50 py-12">
+      <section className="bg-gray-50 ">
         <ReviewCarousel />
       </section>
 
@@ -62,7 +63,7 @@ const Home = () => {
       </section>
 
       {/* CEO */}
-      <section className="py-12">
+      <section>
         <CeoSection />
       </section>
 
@@ -72,7 +73,7 @@ const Home = () => {
       </section>
 
       {/* Contact */}
-      <section className="bg-green-50 py-12">
+      <section className="bg-green-50">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}

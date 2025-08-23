@@ -4,7 +4,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
-import history from "connect-history-api-fallback";
 
 import contactRoutes from "./routes/contactRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
@@ -31,12 +30,6 @@ app.use(
 app.use(express.json());
 
 // ========================
-// API Routes
-// ========================
-app.use("/contact", contactRoutes);
-app.use("/admin", adminRoutes);
-
-// ========================
 // MongoDB connection
 // ========================
 mongoose
@@ -45,20 +38,25 @@ mongoose
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
 // ========================
-// Serve React frontend (Vite) with SPA fallback
+// API Routes (prefix /api to avoid conflict with frontend)
+// ========================
+app.use("/contact", contactRoutes);
+app.use("/admin", adminRoutes);
+
+// ========================
+// Serve React frontend (Vite)
 // ========================
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const frontendDist = path.join(__dirname, "../Frontend/dist");
 
-// Use history fallback for React Router
-app.use(history({
-  index: '/index.html',
-  verbose: true
-}));
-
-// Serve static files
+// Serve static files first
 app.use(express.static(frontendDist));
+
+// Catch-all for React Router (must come after API routes)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendDist, "index.html"));
+});
 
 // ========================
 // Start server
