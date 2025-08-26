@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 // Use env var or fallback for localhost
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+const API_BASE_URL = "https://bimfrox-p3a9.onrender.com/api";
 
 const AdminDashboard = () => {
   const [contacts, setContacts] = useState([]);

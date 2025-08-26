@@ -5,8 +5,8 @@ import ind from "../assets/USES/INDUSTRIES.png";
 import social from "../assets/USES/social media.png";
 import team from "../assets/USES/team.png";
 
-// Use env variable OR fallback for local dev
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+// Hardcoded backend URL
+const API_BASE_URL = "https://bimfrox-p3a9.onrender.com/api";
 
 const stats = [
   { number: "10+", label: "Happy Clients Served", icon: happy },
@@ -48,11 +48,10 @@ const ContactPage = () => {
         body: JSON.stringify(formData),
       });
 
-      // First check if server returned JSON or something else
       let data;
-      try {
+      if (response.headers.get("content-type")?.includes("application/json")) {
         data = await response.json();
-      } catch {
+      } else {
         const text = await response.text();
         console.error("Non-JSON response from server:", text);
         throw new Error("Server did not return JSON");
