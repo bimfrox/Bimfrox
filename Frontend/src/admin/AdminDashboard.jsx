@@ -2,7 +2,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+// Use env var or fallback for localhost
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
 
 const AdminDashboard = () => {
   const [contacts, setContacts] = useState([]);
@@ -35,7 +36,16 @@ const AdminDashboard = () => {
         return;
       }
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        const text = await res.text();
+        console.error("Non-JSON response:", text);
+        toast.error("❌ Server returned invalid response");
+        return;
+      }
+
       if (data.success && Array.isArray(data.contacts)) {
         setContacts(data.contacts);
       } else if (Array.isArray(data)) {
@@ -114,7 +124,9 @@ const AdminDashboard = () => {
                   <td className="p-3">{c.serviceType || "—"}</td>
                   <td className="p-3">{c.budget || "—"}</td>
                   <td className="p-3">
-                    {c.createdAt ? new Date(c.createdAt).toLocaleDateString() : "—"}
+                    {c.createdAt
+                      ? new Date(c.createdAt).toLocaleDateString()
+                      : "—"}
                   </td>
                 </tr>
               ))}

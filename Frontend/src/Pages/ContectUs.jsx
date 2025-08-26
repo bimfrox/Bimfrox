@@ -5,7 +5,8 @@ import ind from "../assets/USES/INDUSTRIES.png";
 import social from "../assets/USES/social media.png";
 import team from "../assets/USES/team.png";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Use Vite env variable
+// Use env variable OR fallback for local dev
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 const stats = [
   { number: "10+", label: "Happy Clients Served", icon: happy },
@@ -47,9 +48,17 @@ const ContactPage = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      // First check if server returned JSON or something else
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        const text = await response.text();
+        console.error("Non-JSON response from server:", text);
+        throw new Error("Server did not return JSON");
+      }
 
-      if (data.success) {
+      if (response.ok && data.success) {
         toast.success("✅ Thanks! Your message has been submitted.");
         setFormData({
           fullName: "",
@@ -59,7 +68,7 @@ const ContactPage = () => {
           budget: "",
         });
       } else {
-        toast.error("❌ " + (data.message || "Failed to submit form"));
+        toast.error("❌ " + (data?.message || "Failed to submit form"));
       }
     } catch (error) {
       console.error("Error submitting contact form:", error);

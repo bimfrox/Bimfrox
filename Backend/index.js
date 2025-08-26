@@ -21,6 +21,8 @@ app.use(
       "http://localhost:5173",              // local dev
     ],
     credentials: true,
+    methods:["GET","POST","QPTIONS"],
+    allowedHeaders:['Content-Type','Authorization']
   })
 );
 
@@ -40,8 +42,8 @@ mongoose
 // ========================
 // API Routes (always prefix with /api)
 // ========================
-app.use("/contact", contactRoutes);
-app.use("/admin", adminRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/admin", adminRoutes);
 
 // ========================
 // Serve React frontend (Vite build)

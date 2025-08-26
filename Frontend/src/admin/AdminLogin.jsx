@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // use Vite env variable
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
 
 const AdminLogin = () => {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -24,7 +24,15 @@ const AdminLogin = () => {
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        const text = await res.text();
+        console.error("Non-JSON response:", text);
+        toast.error("❌ Server returned invalid response");
+        return;
+      }
 
       if (data.success) {
         toast.success("✅ OTP sent to your email");
@@ -54,6 +62,7 @@ const AdminLogin = () => {
           value={form.username}
           onChange={handleChange}
           className="w-full border px-4 py-2 rounded-lg mb-4"
+          required
         />
         <input
           type="password"
@@ -62,12 +71,15 @@ const AdminLogin = () => {
           value={form.password}
           onChange={handleChange}
           className="w-full border px-4 py-2 rounded-lg mb-4"
+          required
         />
         <button
           type="submit"
           disabled={loading}
           className={`w-full py-2 rounded-lg text-white ${
-            loading ? "bg-green-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
+            loading
+              ? "bg-green-400 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700"
           } transition`}
         >
           {loading ? "Sending OTP..." : "Login"}

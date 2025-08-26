@@ -110,9 +110,6 @@ const Footer = () => {
                 {item.icon}
               </a>
             ))}
-            <NavLink to="/admin/login">
-              Admin    
-        </NavLink>
           </div>
         </div>
       </div>
