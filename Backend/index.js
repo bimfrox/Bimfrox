@@ -12,17 +12,18 @@ dotenv.config();
 const app = express();
 
 // ========================
-// CORS
+// CORS FIX
 // ========================
 app.use(
   cors({
     origin: [
-      "https://bimfrox01.onrender.com", // deployed frontend
-      "http://localhost:5173",              // local dev
+      "https://www.bimfrox.com",        // ✅ production frontend
+      "https://bimfrox01.onrender.com", // ✅ deployed test frontend
+      "http://localhost:5173",          // ✅ local dev
     ],
     credentials: true,
-    methods:["GET","POST","QPTIONS"],
-    allowedHeaders:['Content-Type','Authorization']
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ fixed
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
@@ -50,14 +51,14 @@ app.use("/api/admin", adminRoutes);
 // ========================
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const frontendDist = path.join(__dirname, "../Frontend/dist/index.html");
+const frontendDist = path.join(__dirname, "../Frontend/dist");
 
-// Serve static files
+// Serve static files from dist folder
 app.use(express.static(frontendDist));
 
 // ✅ Catch-all to let React Router handle routing
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(frontendDist));
+  res.sendFile(path.resolve(frontendDist, "index.html"));
 });
 
 // ========================
