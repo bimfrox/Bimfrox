@@ -17,7 +17,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://bimfrox-ankit.onrender.com", // deployed frontend
+      "https://bimfrox01.onrender.com", // deployed frontend
       "http://localhost:5173",              // local dev
     ],
     credentials: true,
