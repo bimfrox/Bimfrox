@@ -6,7 +6,7 @@ import social from "../assets/USES/social media.png";
 import team from "../assets/USES/team.png";
 
 // Hardcoded backend URL
-const API_BASE_URL = "https://bimfrox-p3a9.onrender.com/api";
+const API_BASE_URL = "https://bimfrox-wugz.onrender.com/api";
 
 const stats = [
   { number: "10+", label: "Happy Clients Served", icon: happy },

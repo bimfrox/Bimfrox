@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const API_BASE_URL = "https://bimfrox-p3a9.onrender.com/api";
+const API_BASE_URL = "https://bimfrox-wugz.onrender.com/api";
 
 const OtpVerify = () => {
   const [otp, setOtp] = useState("");

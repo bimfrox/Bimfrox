@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
       <div style="text-align:center; margin-bottom:20px;">
         <img src="https://res.cloudinary.com/duji9wpsp/image/upload/v1755586879/bimfroxlogo_qoghav.png" alt="BIMFROX Logo" style="width:150px; margin-bottom:10px;" />
       </div>
-      <h2 style="text-align:center; color:#2c3e50;">Hey 👋</h2>
+      <h2 style="text-align:center; color:#2c3e50;">Hello ${fullName} 👋</h2>
       <p style="font-size:16px; line-height:1.6;">
         Thanks for contacting <b>BIMFROX — Your Growth Partner Online! 🎉</b><br><br>
         We’ve noted your message and our team is already preparing to assist you.
@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
         <li>✨ Exclusive packages designed for small & growing businesses</li>
       </ul>
       <p style="font-size:16px; line-height:1.6;">
-        ⏳ Till then, don’t miss out: <a href="https://yourdomain.com" target="_blank" style="color:#007bff; text-decoration:none;">Check this out</a>
+        ⏳ Till then, don’t miss out: <a href="https://portfolio-bimfrox-g585.onrender.com/" target="_blank" style="color:#007bff; text-decoration:none;">Check this out</a>
       </p>
       <p style="font-size:16px; line-height:1.6;">
         We’re excited to help you turn your idea into a strong digital brand.
