@@ -12,7 +12,7 @@ const reviews = [
     name: "Vally",
     joinDate: "July 2025",
     rating: 4,
-    reviewDate: "July 25, 2025",
+    reviewDate: "Augest 20, 2025",
     reviewText1:
       "BIMFROX did an outstanding job designing our website! The design is modern, professional, and perfectly matches our brand. Their service is top-notch, very responsive, and they truly understand client needs. Highly recommended for anyone looking for high-quality web development services.",
 
@@ -25,9 +25,9 @@ const reviews = [
     name: "Tulsi",
     joinDate: "July 2025",
     rating: 5,
-    reviewDate: "July 25, 2025",
+    reviewDate: "Augest 5, 2025",
     reviewText1:
-      "BIMFROX did an outstanding job designing our website! The design is modern, professional, and perfectly matches our brand. Their service is top-notch, very responsive, and they truly understand client needs. Highly recommended for anyone looking for high-quality web development services.",
+      "BIMFROX ne hamari brand visibility ko kaafi boost kiya hai unke marketing services ke through. Unki strategies se humein zyada customers mile, engagement badha aur sales grow hui. Team professional, supportive aur result-driven hai. Highly recommended.",
     helpfulCount: 24,
     avatar: tulsi,
     feedback: "Highly recommend!",
@@ -39,7 +39,7 @@ const reviews = [
     rating: 5,
     reviewDate: "July 25, 2025",
     reviewText1:
-      "BIMFROX did an outstanding job designing our website! The design is modern, professional, and perfectly matches our brand. Their service is top-notch, very responsive, and they truly understand client needs. Highly recommended for anyone looking for high-quality web development services.",
+      "Working with BIMFROX was an excellent experience. They understood our needs well, delivered on time, and maintained smooth communication. Their professional design and development services truly supported our business growth. I highly recommend their team",
     reviewText2: "",
     helpfulCount: 12,
     avatar: me,
@@ -48,9 +48,9 @@ const reviews = [
   {
     id: 4,
     name: "JJB Oversize",
-    joinDate: "March 2020",
+    joinDate: "june 2025",
     rating: 5,
-    reviewDate: "October 1, 2023",
+    reviewDate: "july 1, 2025",
     reviewText1:
       "BIMFROX did an outstanding job designing our website! The design is modern, professional, and perfectly matches our brand. Their service is top-notch, very responsive, and they truly understand client needs. Highly recommended for anyone looking for high-quality web development services.",
     helpfulCount: 30,
@@ -60,9 +60,9 @@ const reviews = [
   {
     id: 5,
     name: "AM",
-    joinDate: "November 2018",
+    joinDate: "June 2025",
     rating: 4,
-    reviewDate: "December 20, 2021",
+    reviewDate: "july 15, 2025",
     reviewText1:
     "Absolutely love our new website made by BIMFROX! Looks amazing, works perfectly, and the whole process was smooth. The team is super friendly and helpful. Totally worth it",
     helpfulCount: 8,
