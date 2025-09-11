@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Pages/Navbar";
 import AllRoutes from "./Pages/AllRoutes";
@@ -8,12 +8,21 @@ import LogoLoader from "./Components/Loder";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import WhatsAppFloat from "./Components/Whatsapp";
+import Popup from "./Components/Popup"; // 👈 import popup
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
   const location = useLocation();
 
-  // Hide Navbar & Footer on admin routes
+  // Show popup after site loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 2000); // show after 2 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
   const hideLayout = location.pathname.startsWith("/admin");
 
   return (
@@ -27,6 +36,7 @@ function App() {
           <WhatsAppFloat />
           <AnimatedCursor />
           {!hideLayout && <Footer />}
+          {showPopup && <Popup onClose={() => setShowPopup(false)} />}
         </>
       )}
     </>
