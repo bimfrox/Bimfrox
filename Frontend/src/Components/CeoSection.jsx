@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
-import ceoImg from "../assets/images/ceorahul.jpg";
+import ceoImg from "../assets/images/ceoimg.jpg";
 motion;
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
