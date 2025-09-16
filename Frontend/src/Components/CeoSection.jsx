@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
 import ceoImg from "../assets/images/ceoimg.jpg";
 motion;
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i = 0) => ({
@@ -65,7 +66,7 @@ export default function CeoSection() {
           {/* Social Icons */}
           <div className="flex gap-6 justify-center lg:justify-start">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/rahul-chaursiya/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-green-500 text-2xl transition"
@@ -73,15 +74,7 @@ export default function CeoSection() {
               <FaLinkedin />
             </a>
             <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-green-500 text-2xl transition"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/rahul._officials?igsh=MW90bjFubjJvdm5kNQ=="
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-green-500 text-2xl transition"

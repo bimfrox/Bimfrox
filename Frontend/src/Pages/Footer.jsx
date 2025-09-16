@@ -2,10 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import {
-  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
 
@@ -94,9 +92,8 @@ const Footer = () => {
           </h2>
           <div className="flex space-x-4">
             {[
-              { icon: <FaInstagram />, link: "https://instagram.com", label: "Instagram" },
-              { icon: <FaLinkedinIn />, link: "https://linkedin.com", label: "LinkedIn" },
-              { icon: <FaTwitter />, link: "https://twitter.com", label: "Twitter" },
+              { icon: <FaInstagram />, link: "https://www.instagram.com/bimfrox?igsh=ZWRlNTdwYWFqaDJo", label: "Instagram" },
+              { icon: <FaLinkedinIn />, link: "https://www.linkedin.com/company/bimfrox", label: "LinkedIn" },
               { icon: <FaWhatsapp />, link: "https://wa.me/918401809966", label: "WhatsApp" },
             ].map((item, i) => (
               <a
