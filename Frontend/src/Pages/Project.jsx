@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ContectBox from "../Components/ContectBox";
 import pizza from "../assets/Projectimg/salom pizza project.png";
 import me from "../assets/Projectimg/me_Project.png";
@@ -8,6 +8,28 @@ import vellay from "../assets/Projectimg/vellaypani_project.png";
 import banner from "../assets/images/banner_bimfrox.png";
 
 const Projects = () => {
+  // ✅ SEO for Projects Page
+  useEffect(() => {
+    document.title = "BIMFROX Projects | Web Development Portfolio & Case Studies";
+
+    const description = document.createElement("meta");
+    description.name = "description";
+    description.content =
+      "Explore BIMFROX portfolio showcasing web development, UI/UX, and digital projects. See how we turn ideas into innovative, responsive, and engaging digital solutions.";
+    document.head.appendChild(description);
+
+    const keywords = document.createElement("meta");
+    keywords.name = "keywords";
+    keywords.content =
+      "BIMFROX projects, web development portfolio, UI UX projects, digital solutions, responsive websites, case studies, tech portfolio";
+    document.head.appendChild(keywords);
+
+    return () => {
+      document.head.removeChild(description);
+      document.head.removeChild(keywords);
+    };
+  }, []);
+
   const projectList = [
     {
       title: "Yellay Pani",
@@ -39,7 +61,7 @@ const Projects = () => {
       img: me,
       description:
         "A personal portfolio website showcasing creative design, skills, and professional work in an elegant layout.",
-      link: "#",
+      link: "https://me-78nx.onrender.com",
     },
     {
       title: "Transport Me",
@@ -53,11 +75,11 @@ const Projects = () => {
 
   return (
     <>
-      {/* Seamless looping banner */}
+      {/* Seamless scrolling banner */}
       <div className="overflow-hidden relative w-full bg-white">
         <div className="flex animate-scroll">
-          <img src={banner} alt="banner" className="w-full flex-shrink-" />
-          <img src={banner} alt="banner" className="w-full flex-shrink-0" />
+          <img src={banner} alt="BIMFROX Projects Banner" className="w-full flex-shrink-0" />
+          <img src={banner} alt="BIMFROX Projects Banner" className="w-full flex-shrink-0" />
         </div>
       </div>
 
@@ -82,7 +104,7 @@ const Projects = () => {
               <div className="md:w-1/2 overflow-hidden">
                 <img
                   src={project.img}
-                  alt={project.title}
+                  alt={`${project.title} - ${project.category} Project by BIMFROX`}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
               </div>
@@ -92,12 +114,8 @@ const Projects = () => {
                 <span className="text-sm font-medium text-purple-500 tracking-wide uppercase">
                   {project.category}
                 </span>
-                <h3 className="text-2xl font-semibold text-gray-800 mt-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mt-3 leading-relaxed">
-                  {project.description}
-                </p>
+                <h3 className="text-2xl font-semibold text-gray-800 mt-2">{project.title}</h3>
+                <p className="text-gray-600 mt-3 leading-relaxed">{project.description}</p>
 
                 {/* Gradient Divider */}
                 <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-5"></div>
@@ -116,6 +134,8 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      {/* Contact Box */}
       <ContectBox />
     </>
   );

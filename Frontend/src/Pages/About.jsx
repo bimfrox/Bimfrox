@@ -1,12 +1,12 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-motion;
-// ✅ Lazy load components
+motion
+
 const FAQ = lazy(() => import("../Components/Faqs"));
 const ContectBox = lazy(() => import("../Components/ContectBox"));
 const Invaster = lazy(() => import("../Components/invaster"));
@@ -33,6 +33,7 @@ const fadeUp = {
   }),
 };
 
+// Team Members
 const teamMembers = [
   { name: "Mehul Jadhav", role: "CFO & Data Analyst", image: mehul },
   { name: "Ankit Maurya", role: "MERN Developer", image: Ankit },
@@ -41,10 +42,30 @@ const teamMembers = [
 ];
 
 export default function About() {
+  // ✅ SEO Meta Tags
+  useEffect(() => {
+    document.title = "Meet the Team Behind BIMFROX’s Digital Success";
+
+    const description = document.createElement("meta");
+    description.name = "description";
+    description.content =
+      "Learn about BIMFROX, a modern digital startup offering web development, UI/UX design, SEO, and digital marketing services. Meet our passionate team and see our success stories.";
+    document.head.appendChild(description);
+
+    const keywords = document.createElement("meta");
+    keywords.name = "keywords";
+    keywords.content =
+      "BIMFROX, About BIMFROX, digital agency, web development team, startup team, UI UX design, SEO, digital marketing, company information";
+    document.head.appendChild(keywords);
+
+    return () => {
+      document.head.removeChild(description);
+      document.head.removeChild(keywords);
+    };
+  }, []);
+
   return (
     <div className="bg-white text-gray-800">
-      {/* ✅ Removed Helmet to avoid version issues */}
-
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row items-center gap-8 max-w-7xl mx-auto px-6 py-16">
         <motion.img
@@ -72,7 +93,7 @@ export default function About() {
             BIMFROX is a modern startup helping businesses achieve{" "}
             <span className="font-semibold text-green-600">digital success</span>{" "}
             through web development, digital marketing, and automation solutions.
-            With a passionate team driven by innovation, we deliver impactful and
+            Our passionate team is driven by innovation and delivers impactful,
             measurable results tailored to your unique business goals.
           </p>
           <motion.button
@@ -100,9 +121,7 @@ export default function About() {
             Numbers That Speak for Themselves
           </h2>
           <p className="text-gray-600 text-lg">
-            At BIMFROX, every project we deliver adds to our growing track record
-            of success. From happy clients to impactful campaigns, these milestones
-            inspire us to push boundaries and achieve more every day.
+            Every project we deliver adds to our growing track record of success. From happy clients to impactful campaigns, these milestones inspire us to push boundaries and achieve more every day.
           </p>
         </motion.div>
 
@@ -129,9 +148,7 @@ export default function About() {
                 loading="lazy"
                 className="w-16 mx-auto mb-4 drop-shadow-md"
               />
-              <h3 className="text-3xl font-extrabold text-green-600">
-                {item.value}
-              </h3>
+              <h3 className="text-3xl font-extrabold text-green-600">{item.value}</h3>
               <p className="text-gray-600 mt-1">{item.title}</p>
             </motion.article>
           ))}
@@ -151,9 +168,7 @@ export default function About() {
         </motion.h2>
         <p className="max-w-3xl mx-auto text-center text-gray-600 mb-12">
           Behind every successful project is a team of passionate innovators.{" "}
-          <span className="font-bold text-black">At BIMFROX,</span> our people
-          combine creativity, expertise, and dedication to craft solutions that
-          are not just functional, but also truly impactful and future-ready.
+          <span className="font-bold text-black">At BIMFROX,</span> our people combine creativity, expertise, and dedication to craft solutions that are not just functional, but truly impactful.
         </p>
 
         {/* Mobile Carousel */}
@@ -173,7 +188,7 @@ export default function About() {
                 >
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name} - BIMFROX Team Member`}
                     loading="lazy"
                     className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
@@ -202,7 +217,7 @@ export default function About() {
             >
               <img
                 src={member.image}
-                alt={member.name}
+                alt={`${member.name} - BIMFROX Team Member`}
                 loading="lazy"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />

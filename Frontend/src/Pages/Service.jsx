@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-motion;
+motion
 // Images
 import web from "../assets/images/web_logo.png";
 import mo from "../assets/images/app_logo.png";
@@ -9,6 +9,7 @@ import seo from "../assets/images/seo_logo.png";
 import digi from "../assets/images/Digi_logo.png";
 import uiux from "../assets/images/uiux_logo.png";
 
+// Components
 import ContectBox from "../Components/ContectBox";
 
 // ✅ Service Data
@@ -56,6 +57,28 @@ const servicesProvide = [
 ];
 
 const Service = () => {
+  // ✅ SEO for Service Page
+  useEffect(() => {
+    document.title = "BIMFROX Services | Web, Mobile, UI/UX, SEO & Digital Marketing";
+
+    const description = document.createElement("meta");
+    description.name = "description";
+    description.content =
+      "Discover BIMFROX services: Web & Mobile App Development, UI/UX Design, SEO Optimization, and Digital Marketing solutions. Grow your business with our innovative digital expertise.";
+    document.head.appendChild(description);
+
+    const keywords = document.createElement("meta");
+    keywords.name = "keywords";
+    keywords.content =
+      "BIMFROX services, Web Development, Mobile App Development, UI UX Design, SEO Optimization, Digital Marketing, tech solutions, digital agency";
+    document.head.appendChild(keywords);
+
+    return () => {
+      document.head.removeChild(description);
+      document.head.removeChild(keywords);
+    };
+  }, []);
+
   return (
     <div className="bg-gray-50 py-16 px-6">
       {/* Main Heading */}
@@ -83,9 +106,9 @@ const Service = () => {
 
         {/* Intro Description */}
         <p className="text-center max-w-2xl mx-auto mt-4 text-gray-600 leading-relaxed">
-          At <strong>BIMFROX</strong>, we deliver innovative, AI-powered digital solutions
-          designed for businesses of all sizes. From sleek UI/UX designs to robust web development,
-          our services help you grow your brand and reach new heights in the digital world.
+          At <strong>BIMFROX</strong>, we provide innovative digital solutions tailored for businesses of all sizes.
+          From high-performing websites and apps to UI/UX design, SEO, and digital marketing, our services help
+          your brand thrive in the digital landscape.
         </p>
       </header>
 
@@ -118,9 +141,7 @@ const Service = () => {
           >
             {/* Text Section */}
             <div className="flex-1">
-              <h2 className="text-3xl font-bold text-purple-700">
-                {service.title}
-              </h2>
+              <h2 className="text-3xl font-bold text-purple-700">{service.title}</h2>
               <p className="mt-4 text-gray-600">{service.description}</p>
               <NavLink to={service.link}>
                 <button className="mt-6 inline-block bg-purple-600 text-white px-5 py-2 rounded-full shadow hover:scale-105 hover:bg-purple-700 transition duration-300">
@@ -138,7 +159,7 @@ const Service = () => {
               <img
                 src={service.image}
                 alt={service.alt}
-                loading="lazy" // ✅ SEO + Performance
+                loading="lazy"
                 className="w-full h-80 object-cover rounded-xl shadow-lg hover:shadow-2xl transition"
               />
             </motion.div>
