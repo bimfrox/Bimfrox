@@ -111,7 +111,6 @@ const AdminDashboard = () => {
                 <th className="p-3">Email</th>
                 <th className="p-3">Phone</th>
                 <th className="p-3">Service</th>
-                <th className="p-3">Budget</th>
                 <th className="p-3">Date</th>
               </tr>
             </thead>
@@ -122,7 +121,6 @@ const AdminDashboard = () => {
                   <td className="p-3">{c.email || "—"}</td>
                   <td className="p-3">{c.number || "—"}</td>
                   <td className="p-3">{c.serviceType || "—"}</td>
-                  <td className="p-3">{c.budget || "—"}</td>
                   <td className="p-3">
                     {c.createdAt
                       ? new Date(c.createdAt).toLocaleDateString()

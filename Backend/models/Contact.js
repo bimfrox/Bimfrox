@@ -5,8 +5,7 @@ const contactSchema = new mongoose.Schema({
   email: String,
   number: String,
   serviceType: String,
-  budget: String,
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
 });
 
 export default mongoose.model("Contact", contactSchema);
