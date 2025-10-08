@@ -18,7 +18,7 @@ const Home = () => {
     <div className="w-full overflow-x-hidden">
       {/* ✅ SEO Section */}
       <SEO
-        title="BIMFROX - Empowering Digital Growth"
+        title="BIMFROX - Business Growth Partner"
         description="BIMFROX helps Tier 2 & Tier 3 businesses grow with modern digital solutions, marketing strategies, and technology."
         keywords="BIMFROX, digital solutions, CEO Rahul Chaurasiya, marketing, growth, tier 2, tier 3 businesses"
         url="https://www.bimfrox.com"
