@@ -1,6 +1,5 @@
 import React from "react";
 import FAQ from "../Components/Faqs";
-import ContectBox from "../Components/ContectBox";
 import Slide from "../Components/Slide";
 import ReviewCarousel from "../Components/Review";
 import Client from "../Components/Clients";
@@ -9,6 +8,7 @@ import { motion } from "framer-motion";
 import ProcessPage from "../Components/Process";
 import CeoSection from "../Components/CeoSection";
 import SEO from "../Components/Seo";
+import DiwaliImage from "../Components/DiwaliImage";
 
 motion;
 
@@ -24,7 +24,16 @@ const Home = () => {
         url="https://www.bimfrox.com"
         image="https://res.cloudinary.com/duji9wpsp/image/upload/v1755586879/bimfroxlogo_qoghav.png"  //
       />
-
+      {/* Contact */}
+      <section className="bg-green-50">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <DiwaliImage />
+        </motion.div>
+      </section>
       {/* Hero / Slider Section */}
       <section className="">
         <Slide />
@@ -72,16 +81,7 @@ const Home = () => {
         <FAQ />
       </section>
 
-      {/* Contact */}
-      <section className="bg-green-50">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <ContectBox />
-        </motion.div>
-      </section>
+
     </div>
   );
 };
