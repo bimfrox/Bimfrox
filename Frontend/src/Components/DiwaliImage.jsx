@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import diwaliOffer from "../assets/USES/diwali bimfrox offer.png"; // adjust path as needed
+import diwaliOffer from "../assets/USES/diwali.png"; // adjust path as needed
 
 const DiwaliImage = () => {
   const navigate = useNavigate();
